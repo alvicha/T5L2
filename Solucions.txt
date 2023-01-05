@@ -98,3 +98,19 @@ done
 echo "Linux-> $usuariosLinux $suma"
 echo "Windows-> $usuariosWindows $suma2"
 echo "Fin del fichero"
+
+
+6. #!/bin/bash
+read -p "Introduce un nombre de directorio: " dir
+
+if [ dir == $directorio ]
+then
+for i in `find /ruta/al/directorio/que/quieras -maxdepth 1 -type d -mtime +2 -print`
+do
+ echo "Borrando el directorio $i"
+ rm -rf $i;
+done
+fi
+
+echo "Se han borrado $ficheros ficheros."
+echo "Fin del fichero"
