@@ -67,3 +67,34 @@ echo "La cantidad de numeros pares son $cantidadPares"
 echo "La cantidad de numeros impares son $cantidadImpares"
 echo "Fin del fichero"
 
+
+5. #!/bin/bash
+numLineas=`cat listado.txt | wc -l`
+suma=0
+suma2=0
+
+for i in `seq 1 $numLineas`
+do
+   usuariosLinux=`cat listado.txt | grep Linux | awk '{print $3}' | wc -l`
+   processos=`cat listado.txt | awk '{print $3}' | head -n$i | tail -n1`
+   Linux2=`cat listado.txt | awk '{print $2}' | head -n$i | tail -n1`
+   if [ $Linux2 == Linux ]
+   then
+   suma=$((suma+processos))
+   fi
+done
+
+for j in `seq 1 $numLineas`
+do
+   usuariosWindows=`cat listado.txt | grep Windows | awk '{print $3}' | wc -l`
+   processos2=`cat listado.txt | awk '{print $3}' | head -n$j | tail -n1`
+   Windows2=`cat listado.txt | awk '{print $2}' | head -n$j | tail -n1`
+   if [ $Windows2 == Windows ]
+   then
+   suma2=$((suma2+processos2))
+   fi
+done
+
+echo "Linux-> $usuariosLinux $suma"
+echo "Windows-> $usuariosWindows $suma2"
+echo "Fin del fichero"
