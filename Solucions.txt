@@ -10,3 +10,15 @@ for i in `seq 1 $maxLineas`; do
 done
 echo ""
 echo "Fin del fichero"
+
+
+2. #!/bin/bash
+lineas=`cat precipitaciones.txt | wc -l`
+suma=0
+for i in `seq 1 $lineas`
+do
+   media=`cat precipitaciones.txt | awk '{print ($2)}' | head -n$i | tail -n1`
+   suma=$((suma+media))
+done
+promedio=$((suma/lineas))
+echo "La media de precipitaciones es $promedio"
