@@ -32,3 +32,38 @@ do
   echo "$noLluvia"
 done
 echo "Fin del fichero"
+
+
+4. #!/bin/bash
+numeros=`cat numeros.txt | wc -l`
+cantidadPares=0
+cantidadImpares=0
+
+echo "Lista parells: "
+for i in `seq 1 $numeros`
+do
+   numerosPares=`cat numeros.txt | head -n$i | tail -n1`
+   resto=$((numerosPares%2));
+   if [ $resto -eq 0 ]
+   then
+   cantidadPares=$((cantidadPares+1))
+   echo "$numerosPares"
+   fi
+done
+
+echo "Lista senars: "
+for j in `seq 1 $numeros`
+do
+  numerosImpares=`cat numeros.txt | head -n$j | tail -n1`
+  resto=$((numerosImpares%2));
+  if [ $resto -eq 1 ]
+  then
+  cantidadImpares=$((cantidadImpares+1))
+  echo "$numerosImpares"
+fi
+done
+
+echo "La cantidad de numeros pares son $cantidadPares"
+echo "La cantidad de numeros impares son $cantidadImpares"
+echo "Fin del fichero"
+
