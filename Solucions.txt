@@ -22,3 +22,13 @@ do
 done
 promedio=$((suma/lineas))
 echo "La media de precipitaciones es $promedio"
+
+
+3. #!/bin/bash
+Lluvia=`cat precipitaciones.txt | wc -l`
+for i in `seq $Lluvia $Lluvia`; 
+do
+  noLluvia=`cat precipitaciones.txt | awk '{print $2}' | grep ^[0]`
+  echo "$noLluvia"
+done
+echo "Fin del fichero"
